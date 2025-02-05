@@ -1,12 +1,17 @@
-"use client"
+"use client";
+
 import dynamic from 'next/dynamic';
 
-const CheckoutPage = dynamic(() => import('../../components/CheckoutPage').then(mod => mod.default), { 
-    ssr: false 
+// Dynamically import CheckoutPage without SSR
+const CheckoutPage = dynamic(() => import('../../components/CheckoutPage'), {
+    ssr: false,
 });
 
-const Checkoutt  = ({ amount }: { amount: number }) => {
+// Checkout Component
+const Checkout = ({ amount }: { amount: number }) => {
     return <CheckoutPage amount={amount} />;
 };
 
-export default Checkoutt;
+export default function CheckoutPageWrapper() {
+    return <Checkout amount={100} />; // Replace 100 with actual amount if needed
+}
