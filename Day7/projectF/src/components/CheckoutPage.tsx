@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect,  } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import convertToSubCurrency from '../../lib/ConvertToSubCurrency'
 
@@ -13,7 +13,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
         URL = 'http://localhost:3000'
     }
     else {
-        URL = 'https://stripe-payment-one-nu.vercel.ap';
+        URL = 'https://stripe-payment-one-nu.vercel.app';
     }
 
     const stripe = useStripe()
@@ -58,7 +58,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
             elements,
             clientSecret,
             confirmParams: {
-                return_url: `http://localhost:3000//payment-success?amount=${amount}`
+                return_url: `${URL}/payment-success?amount=${amount}`
             }
         })
 
