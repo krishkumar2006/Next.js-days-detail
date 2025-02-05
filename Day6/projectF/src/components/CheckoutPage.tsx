@@ -1,19 +1,16 @@
 'use client'
-import { useState, useEffect,  } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import convertToSubCurrency from '../../lib/ConvertToSubCurrency'
 
 const CheckoutPage = ({ amount }: { amount: number }) => {
-    console.log(window.location.host)
-
-    const myhost = window.location.host
+    let myhost = '';
     let URL = '';
 
-    if (myhost === 'localhost:3000') {
-        URL = 'http://localhost:3000'
-    }
-    else {
-        URL = 'https://stripe-payment-one-nu.vercel.ap';
+    // Ensure window is only accessed on the client side
+    if (typeof window !== "undefined") {
+        myhost = window.location.host;
+        URL = myhost === 'localhost:3000' ? 'http://localhost:3000' : 'https://stripe-payment-one-nu.vercel.app';
     }
 
     const stripe = useStripe()
@@ -23,17 +20,15 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
     const [clientSecret, setClientSecret] = useState('')
     const [loading, setLoading] = useState(false)
 
-
     // as the payment method changes it is necessary to generate a new client secret.
     useEffect(() => {
-        fetch('api/payment-intent', {
+        fetch('/api/payment-intent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ amount: convertToSubCurrency(amount) })
         })
-
             .then(res => res.json())
             .then(data => setClientSecret(data.clientSecret))
     }, [amount])
@@ -58,14 +53,13 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
             elements,
             clientSecret,
             confirmParams: {
-                return_url: `http://localhost:3000//payment-success?amount=${amount}`
+                return_url: `http://localhost:3000/payment-success?amount=${amount}`
             }
         })
 
         if (error) {
             setError(error.message)
-        }
-        else {
+        } else {
             setError('')
             setLoading(false)
         }
@@ -74,7 +68,9 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
     return (
         <form onSubmit={handleSubmit} className='p-8'>
             {clientSecret && <PaymentElement />}
-            <button className='w-full bg-black text-white py-2 mt-5'>Pay Now</button>
+            <button className='w-full bg-black text-white py-2 mt-5' disabled={loading}>
+                {loading ? 'Processing...' : 'Pay Now'}
+            </button>
         </form>
     )
 }
