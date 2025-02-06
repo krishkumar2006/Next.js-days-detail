@@ -37,30 +37,30 @@ const Header = () => {
           
           </ClerkProvider>
         </ul>
-        <div className="flex space-x-4 md:space-x-8 mx-8">
-         <Link href="/account"> <Image src={acc} alt="Account" className="w-[20px] h-[20px] md:w-[30px] md:h-[30px]" /></Link>
-          <Link href="/checkout"><Image src={heart} alt="Likes" className="w-[20px] h-[20px] md:w-[30px] md:h-[30px]" /></Link>
-         <Link href=""> <Image src={search} alt="Search" className="w-[20px] h-[20px] md:w-[30px] md:h-[30px]" /></Link>
-         <Link href="/cart"> <Image src={cart} alt="Cart" className="w-<[20px] h-[20px] md:w-[30px] md:h-[30px]" /></Link>
+        <div className="flex space-x-4 md:space-x-8 mx-4 md:mx-8">
+         <Link href="/account"> <Image src={acc} alt="Account" className="min-w-[20px] min-h-[20px] w-auto h-auto max-w-[20px] max-h-[20px] md:max-w-[30px] md:max-h-[30px] flex-shrink-0" /></Link>
+          <Link href="/checkout"><Image src={heart} alt="Likes" className="min-w-[20px] min-h-[20px] w-auto h-auto max-w-[20px] max-h-[20px] md:max-w-[30px] md:max-h-[30px] flex-shrink-0]" /></Link>
+         <Link href=""> <Image src={search} alt="Search" className="min-w-[20px] min-h-[20px] w-auto h-auto max-w-[20px] max-h-[20px] md:max-w-[30px] md:max-h-[30px] flex-shrink-0" /></Link>
+         <Link href="/cart"> <Image src={cart} alt="Cart" className="min-w-[20px] min-h-[20px] w-auto h-auto max-w-[20px] max-h-[20px] md:max-w-[30px] md:max-h-[30px] flex-shrink-0" /></Link>
         </div>
       </div>
 
       {/* Hero Section */}
-      <div className="bg-[#FBEBB5] w-full h-auto md:h-[900px] flex flex-col md:flex-row items-center">
+      <div className="bg-[#FBEBB5] w-full h-auto md:h-[900px] flex flex-col md:flex-row items-center px-8">
         {/* Left Text */}
-        <div className="text-center md:text-left md:absolute md:left-24 top-1/2 transform md:-translate-y-1/2 px-8">
+        <div className="text-center md:text-left md:w-1/2">
           <h1 className="text-2xl md:text-4xl font-semibold text-gray-900 leading-snug">
             Rocket single <br /> seater
           </h1>
-          <a href="#" className="mt-4 inline-block text-lg font-medium text-gray-700 hover:underline">
+          <a href="/shop" className="mt-4 inline-block text-lg font-medium text-gray-700 hover:underline">
             Shop Now
           </a>
         </div>
         {/* Right Image */}
-      <div className="flex justify-end"> <div className="mt-8 md:mt-0 flex justify-end ">
-          <Image src={singleseater} alt="Rocket Single Seater" className="rounded-lg shadow-sm flex justify-end" />
+      <div className="md:w-1/2 flex justify-end ml-auto"> 
+          <Image src={singleseater} alt="Rocket Single Seater" className="rounded-lg shadow-sm " />
         </div>
-      </div></div>
+      </div>
 
       {/* Side Table Section */}
       <div className="flex flex-wrap justify-center gap-8 p-4">
