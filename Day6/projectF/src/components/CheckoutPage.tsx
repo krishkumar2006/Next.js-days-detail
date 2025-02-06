@@ -41,7 +41,7 @@ const CheckoutPage: React.FC<{ amount: number }> = ({ amount }) => {
         const { error } = await stripe.confirmPayment({
             elements,
             clientSecret,
-            confirmParams: { return_url: `/payment-success?amount=${amount}` }
+            confirmParams: { return_url: `https://marketplace-heckathon.vercel.app/payment-success?amount=${amount}` }
         });
 
         setError(error?.message ?? ''); // ✅ Fix: Ensures errorMessage is always a string
