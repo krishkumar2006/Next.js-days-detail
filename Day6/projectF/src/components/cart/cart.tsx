@@ -1,3 +1,5 @@
+import Image from "next/image";
+import cartimg from "../../../public/Image/cartimg.png"
 import React from "react";
 
 const Cart = () => {
@@ -23,7 +25,7 @@ const Cart = () => {
 className="relative h-72 flex justify-center items-center bg-gray-100">
         <Image
           src={cartimg}
-          alt="Shop Header"
+          alt="cart bg"
           fill
           className="object-cover absolute inset-0 z-0"
           priority />
