@@ -14,4 +14,8 @@ const Checkout = ({ amount }: { amount: number }) => {
 
 export default function CheckoutPageWrapper() {
     return <Checkout amount={100} />; // Replace 100 with actual amount if needed
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 928b982b01a228251c2627ef5078c37b0bc2ef55
