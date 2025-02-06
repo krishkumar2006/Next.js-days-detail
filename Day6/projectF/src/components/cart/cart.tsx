@@ -20,13 +20,21 @@ const Cart = () => {
 
       {/* Breadcrumb */}
       <div
-  className="bg-gray-100 py-4 bg-cover bg-center h-72 flex justify-center items-center "
-  style={{ backgroundImage: "url('/image/cartimg.png')" }}
->
-  <div className=" mx-auto px-4  ">
-    <h2 className="text-2xl font-semibold flex justify-center items-center">Cart</h2>
-    <p className="text-gray-600 flex justify-center "> <a href="/">Home</a> &gt; Cart</p>
+className="relative h-72 flex justify-center items-center bg-gray-100">
+        <Image
+          src={cartimg}
+          alt="Shop Header"
+          fill
+          className="object-cover absolute inset-0 z-0"
+          priority />
+        
+ <div className="relative z-10 text-center">
+    <h2 className="text-2xl font-semibold text-white">Cart</h2>
+    <p className="text-gray-200">
+      <a href="/" className="hover:underline ">Home</a> &gt; Cart
+    </p>
   </div>
+  <div  className="absolute inset-0 bg-black/30 z-0"></div>
 </div>
 
 
