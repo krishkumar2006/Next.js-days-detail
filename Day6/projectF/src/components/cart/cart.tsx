@@ -50,7 +50,7 @@ const Cart = () => {
                   <td className="py-4 px-6 flex items-center">
                     <img
                       src="/image/image.png"
-                      alt="Asgaard Sofa"
+                      alt="Rapson Thirty-Nine"
                       className="w-16 h-16 object-cover rounded"
                     />
                     <span className="ml-4 text-gray-800">Rapson Thirty-Nine Sofa</span>
